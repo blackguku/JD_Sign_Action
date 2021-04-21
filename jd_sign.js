@@ -71,15 +71,15 @@ function sendNotificationIfNeed() {
     console.log('没有执行结果，任务中断!'); return;
   }
 
-  let text = "京东签到_" + dateFormat();
+  let title = "京东签到_" + dateFormat();
   let desp = fs.readFileSync(result_path, "utf8")
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
-    uri:  `https://sc.ftqq.com/${SCKEY}.send`,
-    form: { text, desp },
+    uri:  `https://sctapi.ftqq.com/${SCKEY}.send`,
+    form: { title, desp },
     json: true,
     method: 'POST'
   }
